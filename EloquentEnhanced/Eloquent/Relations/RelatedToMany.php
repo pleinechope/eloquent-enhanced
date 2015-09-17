@@ -3,6 +3,9 @@ namespace EloquentEnhanced\Eloquent\Relations;
 
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * New kind of one-to-many relation for eloquent. Intended to be very permissive.
+ */
 class RelatedToMany extends RelatedTo
 {
 	public function getResults()

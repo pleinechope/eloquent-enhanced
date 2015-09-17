@@ -3,6 +3,9 @@ namespace EloquentEnhanced\Query;
 
 class Builder extends \Illuminate\Database\Query\Builder
 {
+	/**
+	 * Extend of the eloquent whereIn function without error when empty array is given
+	 */
 	public function whereIn($column, $values, $boolean = 'and', $not = false)
 	{
 		if(empty($values)){
@@ -14,6 +17,10 @@ class Builder extends \Illuminate\Database\Query\Builder
 		return $this;
 	}
 
+	/**
+	 * Extends of the offset function,
+	 * avoid setting an offset of 0 that cause error on some SQL engine
+	 */
 	public function offset($value)
 	{
 		$value = max(0, $value);
@@ -23,6 +30,12 @@ class Builder extends \Illuminate\Database\Query\Builder
 		return $this;
 	}
 
+	/**
+	 * remove everything but the name of the collunm name for the lists function
+	 * @param  string $column
+	 * @param  string $key
+	 * @return array
+	 */
 	protected function getListSelect($column, $key)
 	{
 		$parseCol = function($value){
@@ -44,6 +57,13 @@ class Builder extends \Illuminate\Database\Query\Builder
 		return $select;
 	}
 
+	/**
+	 * Extends of the lists function.
+	 * Allowing use table name or a subquery for each column and key parameter
+	 * @param  string $column
+	 * @param  string $key
+	 * @return array
+	 */
 	public function lists($column, $key = null)
 	{
 		$select = is_null($key) ? array($column) : array($column, $key);

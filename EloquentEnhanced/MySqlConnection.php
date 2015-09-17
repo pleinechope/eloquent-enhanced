@@ -1,8 +1,20 @@
 <?php
 namespace EloquentEnhanced;
 
+/**
+ * Extends of \Illuminate\Database\MySqlConnection
+ * alowing us to add trace information on the queryLog
+ */
 class MySqlConnection extends \Illuminate\Database\MySqlConnection
 {
+	/**
+	 * Log a query in the connection's query log.
+	 *
+	 * @param  string  $query
+	 * @param  array   $bindings
+	 * @param  $time
+	 * @return void
+	 */
 	public function logQuery($query, $bindings, $time = null)
 	{
 		if (isset($this->events))

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * New kind of one-to-one relation for eloquent. Intended to be very permissive.
+ */
 class RelatedTo extends \Illuminate\Database\Eloquent\Relations\Relation
 {
 	protected $matchSQL = null;
