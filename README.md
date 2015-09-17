@@ -1,2 +1,2 @@
 # eloquent-enhanced
-Somes adds to the Laravel Eloquent ORM
+Some adds to the Laravel Eloquent ORM
